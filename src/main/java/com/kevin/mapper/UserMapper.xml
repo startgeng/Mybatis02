@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 一对一查询 -->
+<mapper namespace="com.kevin.mapper.UserMapper">
+<resultMap type="User" id="UserResultMap">
+<id property="id" column="id"/>
+<result property="password" column="password"/>
+<association property="userInfo" column="id" select="com.kevin.mapper.userMapper.findUserInfoById"></association>
+
+<association property="departmet" column="department" select="com.kevin.departMapper.findDepartmentById"></association>
+</resultMap>
+<select id="findUserById" parameterType="String" resultMap="UserResultMap">
+select * from user where id=#{id}
+</select>
+</mapper>

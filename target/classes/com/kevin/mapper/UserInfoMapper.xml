@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iss.mapper.userInfoMapper">
+<resultMap type="userInfo" id="UserInfoResultMap">
+<!-- property实体类的属性名  column是指表中的字段名-->
+<id property="id" column="id"></id>
+<result property="password" column="password"/>
+<result property="position" column="position"/>
+<result property="mobile" column="mobile"/>
+<result property="sex" column="sex"/>
+<result property="email" column="email"/>
+<result property="department" column="department"/>
+</resultMap>
+
+<select id="findUserInfoById" parameterType="String" resultMap="UserInfoResultMap">
+select * from userinfo where id=#{id}
+
+</select>
+<select id="findUserInfoByDepartmentId" parameterType="String" resultMap="UserInfoResultMap">
+select * from userinfo where department=#{id}
+</select>
+</mapper>
